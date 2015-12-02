@@ -1,0 +1,56 @@
+body {
+	font-size: 2vmin;
+}
+
+button {
+	font-size: 1.8vmin;
+}
+
+.header {
+	margin-bottom: 4vmin;
+}
+
+
+.matrix {
+	margin:0 auto;
+	overflow: auto;
+	width: 60vmin;
+}
+
+.matrix-item {
+	box-sizing: border-box;
+	float: left;
+	height: 20vmin;
+	width: 20vmin;
+
+}
+
+
+.matrix-item:nth-child(1) {
+	border-right: 1px solid blue;
+	border-bottom: 1px solid blue;
+}
+.matrix-item:nth-child(2) {
+	border-right: 1px solid blue;
+	border-bottom: 1px solid blue;
+}
+.matrix-item:nth-child(3) {
+	border-bottom: 1px solid blue;
+}
+.matrix-item:nth-child(4) {
+	border-right: 1px solid blue;
+	border-bottom: 1px solid blue;
+}
+.matrix-item:nth-child(5) {
+	border-right: 1px solid blue;
+	border-bottom: 1px solid blue;
+}
+.matrix-item:nth-child(6) {
+	border-bottom: 1px solid blue;
+}
+.matrix-item:nth-child(7) {
+	border-right: 1px solid blue;
+}
+.matrix-item:nth-child(8) {
+	border-right: 1px solid blue;
+}
