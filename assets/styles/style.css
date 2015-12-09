@@ -13,7 +13,48 @@
     float: left;
     height: 100px;
     width: 100px;
+    position: relative;
 }
+
+.matrix-item.cross:before {
+    content: 'x';
+    font-family: 'arial';
+    font-size: 48px;
+    text-transform: uppercase;
+
+    /*Vertical/Horizontal alignment*/
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    width: 32px;
+    height: 50px;
+}
+
+.matrix-item.circle:before {
+    content: 'o';
+    font-family: 'arial';
+    font-size: 48px;
+    text-transform: uppercase;
+
+    /*Vertical/Horizontal alignment*/
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    width: 32px;
+    height: 50px;
+}
+
+.matrix-item.win:before {
+    color: #c3ff4d;
+}
+
+
 
 .matrix-item:nth-child(1) {
     border-right: 1px solid #333;
