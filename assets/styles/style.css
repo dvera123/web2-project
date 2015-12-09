@@ -18,12 +18,48 @@ button {
 }
 
 .matrix-item {
+	position: relative;
 	box-sizing: border-box;
 	float: left;
 	height: 20vmin;
 	width: 20vmin;
 
 }
+
+
+.matrix-item.cross:before {
+	content: 'X';
+	font-family: 'arial';
+	font-size: 12vmin;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	width: 9.5vmin;
+	height: 13vmin;
+}
+
+.matrix-item.circle:before {
+	content: 'O';
+	font-family: 'arial';
+	font-size: 12vmin;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	width: 9.5vmin;
+	height: 13vmin;
+}
+
+.matrix-item.win {
+	background-color: #c3ff4d;
+}
+
+
 
 
 .matrix-item:nth-child(1) {
