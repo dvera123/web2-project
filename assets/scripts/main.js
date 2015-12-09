@@ -16,40 +16,47 @@ $(document).ready(function() {
 
 });
 
+//Global variables
 var players = ['Player 1', 'Player 2'];
 
 function startGame() {
 
-    $('.current-player').text(players[0]);
+    var $currentPlayer = $('.current-player');
 
-    $('.current-player').addClass('py1');
+    var $matrix = $('.matrix');
 
-    $('.matrix').unbind('click');
+    $currentPlayer.text(players[0]);
 
-    $('.matrix').on('click', '.matrix-item',function(e) {
-        console.log($(this).index());
+    $currentPlayer.addClass('py1');
 
-        if(checkPlayer() == 'player1' && $(this).hasClass('active')) {
-            $(this).addClass('cross');
-            hasWin( checkPlayer() );
+    $matrix.unbind('click');
 
-            $('.current-player').text(players[1]);
-            $('.current-player').removeClass('py1');
-            $('.current-player').addClass('py2'); 
+    $matrix.on('click', '.matrix-item',function(e) {
+        
+        var myPlayer = checkPlayer();
+        var $this = $(this);
+
+        if(myPlayer == 'player1' && $this.hasClass('active')) {
+            $this.addClass('cross');
+            hasWin( myPlayer );
+
+            $currentPlayer.text(players[1]);
+            $currentPlayer.removeClass('py1');
+            $currentPlayer.addClass('py2'); 
         }
 
-        else if(checkPlayer() == 'player2' && $(this).hasClass('active')) {
-            $(this).addClass('circle');
-            hasWin( checkPlayer() );
+        else if(myPlayer == 'player2' && $this.hasClass('active')) {
+            $this.addClass('circle');
+            hasWin( myPlayer );
 
-            $('.current-player').text(players[0]);
-            $('.current-player').removeClass('py2');
-            $('.current-player').addClass('py1');
-            $(this).addClass('circle');
+            $currentPlayer.text(players[0]);
+            $currentPlayer.removeClass('py2');
+            $currentPlayer.addClass('py1');
+            $this.addClass('circle');
         }
 
-        $(this).addClass('inactive');
-        $(this).removeClass('active');
+        $this.addClass('inactive');
+        $this.removeClass('active');
 
     });
 };
