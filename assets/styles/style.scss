@@ -1,0 +1,98 @@
+body {
+  font-size: 3vmin;
+  background-color: #65ab77;
+  color: white;
+}
+
+hr {
+  position: relative;
+  top: -3.5vmin;
+  border-color: black;
+}
+
+.header {
+  position: relative;
+  top: -2.5vmin;
+  margin-bottom: 4vmi5;
+  h1 {
+    text-align: center;
+  }
+}
+
+.ops {
+  position: relative;
+  top: -5vmin;
+}
+
+.header p {
+  font-size: 120%;
+}
+
+button {
+  position: relative;
+  top: -2vmin;
+  font-size: 1.8vmin;
+  color: #000;
+}
+
+.matrix {
+  position: relative;
+  left: 1px;
+  margin: 0 auto;
+  overflow: auto;
+  width: 60vmin;
+}
+
+.matrix-item {
+  position: relative;
+  box-sizing: border-box;
+  float: left;
+  height: 20vmin;
+  width: 20vmin;
+  &.cross:before {
+    content: 'X';
+    font-family: 'arial';
+    font-size: 12vmin;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 9.5vmin;
+    height: 13vmin;
+  }
+  &.circle:before {
+    content: 'O';
+    font-family: 'arial';
+    font-size: 12vmin;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 9.5vmin;
+    height: 13vmin;
+  }
+  &.win {
+    background-color: #4baeab;
+  }
+  &:nth-child(1), &:nth-child(2) {
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+  }
+  &:nth-child(3) {
+    border-bottom: 2px solid black;
+  }
+  &:nth-child(4), &:nth-child(5) {
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+  }
+  &:nth-child(6) {
+    border-bottom: 2px solid black;
+  }
+  &:nth-child(7), &:nth-child(8) {
+    border-right: 2px solid black;
+  }
+}
