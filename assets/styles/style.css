@@ -1,17 +1,47 @@
+/*Agregados los estilos*/
+
 body {
-	font-size: 2vmin;
+	font-size: 3vmin;
+	background-color: #65ab77;
+	color: white;
+}
+hr {
+	position: relative;
+	top: -3.5vmin;
+	border-color: black;
+}
+
+
+
+.header {
+	position: relative;
+	top: -2.5vmin;
+	margin-bottom: 4vmi5
+}
+
+.header h1 {
+	text-align: center;
+}
+
+.ops {
+	position: relative;
+	top: -5vmin;
+}
+
+.header p {
+	font-size: 120%;
 }
 
 button {
+	position: relative;
+	top: -2vmin;
 	font-size: 1.8vmin;
+	color: #000;
 }
-
-.header {
-	margin-bottom: 4vmin;
-}
-
 
 .matrix {
+	position: relative;
+	left: 1px;
 	margin:0 auto;
 	overflow: auto;
 	width: 60vmin;
@@ -56,37 +86,37 @@ button {
 }
 
 .matrix-item.win {
-	background-color: #c3ff4d;
+	background-color: #4baeab;
 }
 
 
 
 
 .matrix-item:nth-child(1) {
-	border-right: 1px solid blue;
-	border-bottom: 1px solid blue;
+	border-right: 2px solid black;
+	border-bottom: 2px solid black;
 }
 .matrix-item:nth-child(2) {
-	border-right: 1px solid blue;
-	border-bottom: 1px solid blue;
+	border-right: 2px solid black;
+	border-bottom: 2px solid black;
 }
 .matrix-item:nth-child(3) {
-	border-bottom: 1px solid blue;
+	border-bottom: 2px solid black;
 }
 .matrix-item:nth-child(4) {
-	border-right: 1px solid blue;
-	border-bottom: 1px solid blue;
+	border-right: 2px solid black;
+	border-bottom: 2px solid black;
 }
 .matrix-item:nth-child(5) {
-	border-right: 1px solid blue;
-	border-bottom: 1px solid blue;
+	border-right: 2px solid black;
+	border-bottom: 2px solid black;
 }
 .matrix-item:nth-child(6) {
-	border-bottom: 1px solid blue;
+	border-bottom: 2px solid black;
 }
 .matrix-item:nth-child(7) {
-	border-right: 1px solid blue;
+	border-right: 2px solid black;
 }
 .matrix-item:nth-child(8) {
-	border-right: 1px solid blue;
+	border-right: 2px solid black;
 }
