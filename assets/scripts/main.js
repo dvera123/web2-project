@@ -101,93 +101,56 @@ function hasWin(player) {
 
     var itemsArray = $('.matrix .matrix-item');
 
-    if( $(itemsArray).eq(0).hasClass(itemSign) &&
-        $(itemsArray).eq(1).hasClass(itemSign) &&
-        $(itemsArray).eq(2).hasClass(itemSign) ) {
+    checkIfWin(itemsArray, itemSign);
 
-        $(itemsArray).eq(0).addClass('win');
-        $(itemsArray).eq(1).addClass('win');
-        $(itemsArray).eq(2).addClass('win');
+    
+};
 
-        $('.matrix').unbind('click');
+function checkIfWin (itemsArray, itemSign) {
+
+    for( var x=0; x<= itemsArray.length; x++){
+        
+        if( x%3==0 && x!=0) {
+            if(itemsArray.eq(x-1).hasClass(itemSign) && 
+                itemsArray.eq(x-2).hasClass(itemSign) &&
+                itemsArray.eq(x-3).hasClass(itemSign))
+            { 
+                markifWin(x-1,x-2,x-3, itemsArray);
+            }
+        }
+
+        if( x<3 ) {
+            if(itemsArray.eq(x).hasClass(itemSign) && 
+                itemsArray.eq(x+3).hasClass(itemSign)&&
+                itemsArray.eq(x+6).hasClass(itemSign)) {
+
+                markifWin(x,x+3,x+6, itemsArray);
+                
+            }
+        }
+
+        if(itemsArray.eq(2).hasClass(itemSign) && 
+            itemsArray.eq(4).hasClass(itemSign)&&
+            itemsArray.eq(6).hasClass(itemSign)) {
+
+            markifWin(2,4,6, itemsArray);
+        }
+
+        if(itemsArray.eq(0).hasClass(itemSign) && 
+            itemsArray.eq(4).hasClass(itemSign)&&
+            itemsArray.eq(8).hasClass(itemSign)) {
+
+            markifWin(0,4,8, itemsArray);
+        }
     }
 
-    if( $(itemsArray).eq(3).hasClass(itemSign) &&
-        $(itemsArray).eq(4).hasClass(itemSign) &&
-        $(itemsArray).eq(5).hasClass(itemSign) ) {
+};
 
-        $(itemsArray).eq(3).addClass('win');
-        $(itemsArray).eq(4).addClass('win');
-        $(itemsArray).eq(5).addClass('win');
-
-        $('.matrix').unbind('click');
-    }
-
-    if( $(itemsArray).eq(6).hasClass(itemSign) &&
-        $(itemsArray).eq(7).hasClass(itemSign) &&
-        $(itemsArray).eq(8).hasClass(itemSign) ) {
-
-        $(itemsArray).eq(6).addClass('win');
-        $(itemsArray).eq(7).addClass('win');
-        $(itemsArray).eq(8).addClass('win');
-
-        $('.matrix').unbind('click');
-    }
-
-    if( $(itemsArray).eq(0).hasClass(itemSign) &&
-        $(itemsArray).eq(3).hasClass(itemSign) &&
-        $(itemsArray).eq(6).hasClass(itemSign) ) {
-
-        $(itemsArray).eq(0).addClass('win');
-        $(itemsArray).eq(3).addClass('win');
-        $(itemsArray).eq(6).addClass('win');
-
-        $('.matrix').unbind('click');
-    }
-
-    if( $(itemsArray).eq(2).hasClass(itemSign) &&
-        $(itemsArray).eq(5).hasClass(itemSign) &&
-        $(itemsArray).eq(8).hasClass(itemSign) ) {
-
-        $(itemsArray).eq(2).addClass('win');
-        $(itemsArray).eq(5).addClass('win');
-        $(itemsArray).eq(8).addClass('win');
-
-        $('.matrix').unbind('click');
-    }
-
-    if( $(itemsArray).eq(0).hasClass(itemSign) &&
-        $(itemsArray).eq(4).hasClass(itemSign) &&
-        $(itemsArray).eq(8).hasClass(itemSign) ) {
-
-        $(itemsArray).eq(0).addClass('win');
-        $(itemsArray).eq(4).addClass('win');
-        $(itemsArray).eq(8).addClass('win');
-
-        $('.matrix').unbind('click');
-    }
-
-    if( $(itemsArray).eq(2).hasClass(itemSign) &&
-        $(itemsArray).eq(4).hasClass(itemSign) &&
-        $(itemsArray).eq(6).hasClass(itemSign) ) {
-
-        $(itemsArray).eq(2).addClass('win');
-        $(itemsArray).eq(4).addClass('win');
-        $(itemsArray).eq(6).addClass('win');
-
-        $('.matrix').unbind('click');
-    }
-
-    if( $(itemsArray).eq(1).hasClass(itemSign) &&
-        $(itemsArray).eq(4).hasClass(itemSign) &&
-        $(itemsArray).eq(7).hasClass(itemSign) ) {
-
-        $(itemsArray).eq(1).addClass('win');
-        $(itemsArray).eq(4).addClass('win');
-        $(itemsArray).eq(7).addClass('win');
-
-        $('.matrix').unbind('click');
-    }
+function markifWin (a,b,c, itemsArray) {
+    $('.matrix').unbind('click');
+    itemsArray.eq(a).addClass('win');
+    itemsArray.eq(b).addClass('win');
+    itemsArray.eq(c).addClass('win');
 };
 
 
