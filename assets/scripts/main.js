@@ -1,18 +1,70 @@
 $(document).ready(function() {
 
     $('.start-game').on('click', function(e) {
-        $(this).attr('disabled', 'disabled');
-        $('.stop-game').removeAttr('disabled');
-        console.log('start game');
+       
         startGame();
     });
 
     $('.stop-game').on('click', function(e) {
-        $(this).attr('disabled', 'disabled');
-        $('.start-game').removeAttr('disabled');
-        console.log('stop game');
+
         stopGame();
     });
+
+    if (annyang) {
+        // Let's define our first command. First the text we expect, and then the function it should call
+        var commands = {
+            'start game': function() {
+                startGame();
+            },
+
+            'stop game': function() {
+                startGame();
+            },
+
+            'one': function() {
+                $('.matrix-item').eq(0).click();
+            },
+
+            'two': function() {
+                $('.matrix-item').eq(1).click();
+            },
+
+            'three': function() {
+                $('.matrix-item').eq(2).click();
+            },
+
+            'four': function() {
+                $('.matrix-item').eq(3).click();
+            },
+
+            'five': function() {
+                $('.matrix-item').eq(4).click();
+            },
+
+            'six': function() {
+                $('.matrix-item').eq(5).click();
+            },
+
+            'seven': function() {
+                $('.matrix-item').eq(6).click();
+            },
+
+            'eight': function() {
+                $('.matrix-item').eq(7).click();
+            },
+
+            'nine': function() {
+                $('.matrix-item').eq(8).click();
+            }
+
+        };
+
+        // Add our commands to annyang
+        annyang.addCommands(commands);
+
+        // Start listening. You can call this here, or attach this call to an event, button, etc.
+        annyang.start();
+    }
 
 });
 
@@ -20,6 +72,10 @@ $(document).ready(function() {
 var players = ['Player 1', 'Player 2'];
 
 function startGame() {
+
+    $('.start-game').attr('disabled', 'disabled');
+
+    $('.stop-game').removeAttr('disabled');
 
     var $currentPlayer = $('.current-player');
 
@@ -64,6 +120,10 @@ function startGame() {
 
 function stopGame() {
 
+    $('.stop-game').attr('disabled', 'disabled');
+
+    $('.start-game').removeAttr('disabled');
+
     $('.matrix').unbind('click');
 
     $('.matrix-item')
@@ -101,96 +161,54 @@ function hasWin(player) {
 
     var itemsArray = $('.matrix .matrix-item');
 
-    if( $(itemsArray).eq(0).hasClass(itemSign) &&
-        $(itemsArray).eq(1).hasClass(itemSign) &&
-        $(itemsArray).eq(2).hasClass(itemSign) ) {
+    checkIfWin(itemsArray, itemSign);
 
-        $(itemsArray).eq(0).addClass('win');
-        $(itemsArray).eq(1).addClass('win');
-        $(itemsArray).eq(2).addClass('win');
-
-        $('.matrix').unbind('click');
-    }
-
-    if( $(itemsArray).eq(3).hasClass(itemSign) &&
-        $(itemsArray).eq(4).hasClass(itemSign) &&
-        $(itemsArray).eq(5).hasClass(itemSign) ) {
-
-        $(itemsArray).eq(3).addClass('win');
-        $(itemsArray).eq(4).addClass('win');
-        $(itemsArray).eq(5).addClass('win');
-
-        $('.matrix').unbind('click');
-    }
-
-    if( $(itemsArray).eq(6).hasClass(itemSign) &&
-        $(itemsArray).eq(7).hasClass(itemSign) &&
-        $(itemsArray).eq(8).hasClass(itemSign) ) {
-
-        $(itemsArray).eq(6).addClass('win');
-        $(itemsArray).eq(7).addClass('win');
-        $(itemsArray).eq(8).addClass('win');
-
-        $('.matrix').unbind('click');
-    }
-
-    if( $(itemsArray).eq(0).hasClass(itemSign) &&
-        $(itemsArray).eq(3).hasClass(itemSign) &&
-        $(itemsArray).eq(6).hasClass(itemSign) ) {
-
-        $(itemsArray).eq(0).addClass('win');
-        $(itemsArray).eq(3).addClass('win');
-        $(itemsArray).eq(6).addClass('win');
-
-        $('.matrix').unbind('click');
-    }
-
-    if( $(itemsArray).eq(2).hasClass(itemSign) &&
-        $(itemsArray).eq(5).hasClass(itemSign) &&
-        $(itemsArray).eq(8).hasClass(itemSign) ) {
-
-        $(itemsArray).eq(2).addClass('win');
-        $(itemsArray).eq(5).addClass('win');
-        $(itemsArray).eq(8).addClass('win');
-
-        $('.matrix').unbind('click');
-    }
-
-    if( $(itemsArray).eq(0).hasClass(itemSign) &&
-        $(itemsArray).eq(4).hasClass(itemSign) &&
-        $(itemsArray).eq(8).hasClass(itemSign) ) {
-
-        $(itemsArray).eq(0).addClass('win');
-        $(itemsArray).eq(4).addClass('win');
-        $(itemsArray).eq(8).addClass('win');
-
-        $('.matrix').unbind('click');
-    }
-
-    if( $(itemsArray).eq(2).hasClass(itemSign) &&
-        $(itemsArray).eq(4).hasClass(itemSign) &&
-        $(itemsArray).eq(6).hasClass(itemSign) ) {
-
-        $(itemsArray).eq(2).addClass('win');
-        $(itemsArray).eq(4).addClass('win');
-        $(itemsArray).eq(6).addClass('win');
-
-        $('.matrix').unbind('click');
-    }
-
-    if( $(itemsArray).eq(1).hasClass(itemSign) &&
-        $(itemsArray).eq(4).hasClass(itemSign) &&
-        $(itemsArray).eq(7).hasClass(itemSign) ) {
-
-        $(itemsArray).eq(1).addClass('win');
-        $(itemsArray).eq(4).addClass('win');
-        $(itemsArray).eq(7).addClass('win');
-
-        $('.matrix').unbind('click');
-    }
+    
 };
 
+function checkIfWin (itemsArray, itemSign) {
 
+    for( var x=0; x<= itemsArray.length; x++){
+        
+        if( x%3==0 && x!=0) {
+            if(itemsArray.eq(x-1).hasClass(itemSign) && 
+                itemsArray.eq(x-2).hasClass(itemSign) &&
+                itemsArray.eq(x-3).hasClass(itemSign))
+            { 
+                markifWin(x-1,x-2,x-3, itemsArray);
+            }
+        }
 
+        if( x<3 ) {
+            if(itemsArray.eq(x).hasClass(itemSign) && 
+                itemsArray.eq(x+3).hasClass(itemSign)&&
+                itemsArray.eq(x+6).hasClass(itemSign)) {
 
+                markifWin(x,x+3,x+6, itemsArray);
+                
+            }
+        }
 
+        if(itemsArray.eq(2).hasClass(itemSign) && 
+            itemsArray.eq(4).hasClass(itemSign)&&
+            itemsArray.eq(6).hasClass(itemSign)) {
+
+            markifWin(2,4,6, itemsArray);
+        }
+
+        if(itemsArray.eq(0).hasClass(itemSign) && 
+            itemsArray.eq(4).hasClass(itemSign)&&
+            itemsArray.eq(8).hasClass(itemSign)) {
+
+            markifWin(0,4,8, itemsArray);
+        }
+    }
+
+};
+
+function markifWin (a,b,c, itemsArray) {
+    $('.matrix').unbind('click');
+    itemsArray.eq(a).addClass('win');
+    itemsArray.eq(b).addClass('win');
+    itemsArray.eq(c).addClass('win');
+};

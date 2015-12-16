@@ -1,0 +1,92 @@
+//colors
+$blanco1: #fff;
+$color_plateado: rgba(218,248,247,.45);
+$color_gane: #c3ff4d;
+$color_blanco2: #333;
+
+//fonts
+$font_arial: arial;
+
+//urls
+$url_body: url(../image/pattern1.jpg);
+
+body {
+	color: $blanco1;
+	background-image: $url_body;
+}
+.header {
+	margin-bottom: 25px;
+}
+.matrix {
+	background-color: $color_plateado;
+	overflow: auto;
+	margin: 0 auto;
+	width: 300px;
+}
+.matrix-item {
+	//Instead of the line below you could use @include box-sizing($bs)
+	box-sizing: border-box;
+	float: left;
+	height: 100px;
+	width: 100px;
+	position: relative;
+	&:nth-child(1) {
+		border-right: 3px solid $color_blanco2 ;
+		border-bottom: 3px solid $color_blanco2;
+	}
+	&:nth-child(2) {
+		border-bottom: 3px solid $color_blanco2;
+	}
+	&:nth-child(3) {
+		border-left: 3px solid $color_blanco2;
+		border-bottom: 3px solid $color_blanco2;
+	}
+	&:nth-child(4) {
+		border-right: 3px solid $color_blanco2;
+	}
+	&:nth-child(6) {
+		border-left: 3px solid $color_blanco2;
+	}
+	&:nth-child(7) {
+		border-right: 3px solid $color_blanco2;
+		border-top: 3px solid $color_blanco2;
+	}
+	&:nth-child(8) {
+		border-top: 3px solid $color_blanco2;
+	}
+	&:nth-child(9) {
+		border-left: 3px solid $color_blanco2;
+		border-top: 3px solid $color_blanco2;
+	}
+	&.cross:before {
+		content: 'x';
+		font-family: $font_arial;
+		font-size: 48px;
+		text-transform: uppercase;
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		top: 0;
+		margin: auto;
+		width: 32px;
+		height: 50px;
+	}
+	&.circle:before {
+		content: 'o';
+		font-family: $font_arial;
+		font-size: 48px;
+		text-transform: uppercase;
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		top: 0;
+		margin: auto;
+		width: 32px;
+		height: 50px;
+	}
+	&.win:before {
+		color: $color_gane;
+	}
+}
