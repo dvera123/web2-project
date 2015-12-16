@@ -1,18 +1,70 @@
 $(document).ready(function() {
 
     $('.start-game').on('click', function(e) {
-        $(this).attr('disabled', 'disabled');
-        $('.stop-game').removeAttr('disabled');
-        console.log('start game');
+       
         startGame();
     });
 
     $('.stop-game').on('click', function(e) {
-        $(this).attr('disabled', 'disabled');
-        $('.start-game').removeAttr('disabled');
-        console.log('stop game');
+
         stopGame();
     });
+
+    if (annyang) {
+        // Let's define our first command. First the text we expect, and then the function it should call
+        var commands = {
+            'start game': function() {
+                startGame();
+            },
+
+            'stop game': function() {
+                startGame();
+            },
+
+            'one': function() {
+                $('.matrix-item').eq(0).click();
+            },
+
+            'two': function() {
+                $('.matrix-item').eq(1).click();
+            },
+
+            'three': function() {
+                $('.matrix-item').eq(2).click();
+            },
+
+            'four': function() {
+                $('.matrix-item').eq(3).click();
+            },
+
+            'five': function() {
+                $('.matrix-item').eq(4).click();
+            },
+
+            'six': function() {
+                $('.matrix-item').eq(5).click();
+            },
+
+            'seven': function() {
+                $('.matrix-item').eq(6).click();
+            },
+
+            'eight': function() {
+                $('.matrix-item').eq(7).click();
+            },
+
+            'nine': function() {
+                $('.matrix-item').eq(8).click();
+            }
+
+        };
+
+        // Add our commands to annyang
+        annyang.addCommands(commands);
+
+        // Start listening. You can call this here, or attach this call to an event, button, etc.
+        annyang.start();
+    }
 
 });
 
@@ -20,6 +72,10 @@ $(document).ready(function() {
 var players = ['Player 1', 'Player 2'];
 
 function startGame() {
+
+    $('.start-game').attr('disabled', 'disabled');
+
+    $('.stop-game').removeAttr('disabled');
 
     var $currentPlayer = $('.current-player');
 
@@ -63,6 +119,10 @@ function startGame() {
 
 
 function stopGame() {
+
+    $('.stop-game').attr('disabled', 'disabled');
+
+    $('.start-game').removeAttr('disabled');
 
     $('.matrix').unbind('click');
 
